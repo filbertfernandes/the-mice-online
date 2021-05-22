@@ -16,7 +16,7 @@ class Auth extends CI_Controller
 		}
 		
 		$this->form_validation->set_rules('nickname', 'Nickname', 'required|trim|max_length[20]|is_unique[user.nickname]|alpha_dash', [
-			'max_length' => 'The Nickname is too long.',
+			'max_length' => 'The Nickname maximum 20 characters.',
 			'is_unique' => 'The Nickname has already been taken.',
 			'alpha_dash' => 'The Nickname can\'t contain a space.'
 		]);

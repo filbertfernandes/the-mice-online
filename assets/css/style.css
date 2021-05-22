@@ -4,11 +4,15 @@ body{
 .container {
   margin-top: 100px;
 }
+.box {
+  display: grid;
+  justify-content: center;
+}
 .box input[type = "text"]{
   border:0;
   background: none;
   display: block;
-  margin: 20px auto;
+  margin: auto;
   text-align: center;
   border: 2px solid #00b530;
   padding: 14px 10px;
@@ -18,15 +22,11 @@ body{
   border-radius: 24px;
   transition: 0.25s;
 }
-.box input[type = "text"]:focus{
-  width: 280px;
-  border-color: #00b530;
-}
 .box button{
   border:0;
   background: none;
   display: block;
-  margin: 20px auto;
+  margin: auto;
   text-align: center;
   border: 2px solid #00b530;
   padding: 14px 40px;
