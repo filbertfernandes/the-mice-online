@@ -16,29 +16,21 @@ class Game extends CI_Controller
 		$data['title'] = 'Game';
 		$data['user'] = $this->db->get_where('user', ['nickname' => $this->session->userdata('nickname')])->row_array();
 
-		$this->form_validation->set_rules('highscore', 'Highscore', 'required');
-
-		if($this->form_validation->run() == false) {
-			$this->load->view('templates/header', $data);
-			$this->load->view('game/index', $data);
-			$this->load->view('templates/footer');
-		} else {
-			$data['player'] = $this->db->get_where('user', ['nickname' => $this->session->userdata('nickname')])->row_array();
-
-			if($this->input->post('highscore') > $data['player']['highscore']) {
+		if( $this->input->post('highscore') ) {
+			if($this->input->post('highscore') > $data['user']['highscore']) {
 				$highscoreData = [
 					'nickname' => $this->session->userdata('nickname'),
 					'highscore' => $this->input->post('highscore')
 				];
 				$this->db->where('nickname', $this->session->userdata('nickname'));
 				$this->db->update('user', $highscoreData);
-				redirect('game');
-			} else {
-				redirect('game');
 			}
-
+			$data['user'] = $this->db->get_where('user', ['nickname' => $this->session->userdata('nickname')])->row_array();
 		}
 
+		$this->load->view('templates/header', $data);
+		$this->load->view('game/index', $data);
+		$this->load->view('templates/footer');
 	}
 
 	public function about() {

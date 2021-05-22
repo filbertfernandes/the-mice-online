@@ -126,7 +126,7 @@
 <!-- end choose character -->
 
 <!-- hidden form -->
-<form action="<?= base_url('game') ?>" method="post" id="highscore-form">
+<form action="" method="post" id="highscore-form">
   <input type="hidden" name="highscore" id="highscore-input" value="">
   <button class="btn-sm btn-success highscore-btn" type="submit">SUBMIT HIGHSCORE</button>
 </form>
