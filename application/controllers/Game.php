@@ -30,7 +30,7 @@ class Game extends CI_Controller
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('game/index', $data);
-		$this->load->view('templates/footer');
+		$this->load->view('templates/footer_game');
 	}
 
 	public function about() {
