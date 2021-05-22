@@ -148,18 +148,15 @@ const nickname = document.getElementById('nickname');
 		}
 		function retry() {
 			flyingBlock.classList.remove('flying-block-dead');
-				fatBlock.classList.remove('fat-block-dead');
-				block.classList.add('start');
-				block.style.left = '550px';
-				flyingBlock.classList.add('flying-start');
-				flyingBlock.style.left = '600px';
-				fatBlock.classList.add('fat-start');
-				fatBlock.style.left = '600px';
-				if( parseInt(highscore.innerHTML) <= scoreNumb ) {
-					highscoreInput.value = `${scoreNumb-1}`;
-					highscoreForm.submit();
-				}
-				scoreNumb = 0;
+			fatBlock.classList.remove('fat-block-dead');
+			block.style.left = '550px';
+			flyingBlock.style.left = '600px';
+			fatBlock.style.left = '600px';
+			if( parseInt(highscore.innerHTML) <= scoreNumb ) {
+				highscoreInput.value = `${scoreNumb-1}`;
+				highscoreForm.submit();
+			}
+			scoreNumb = 0;
 		}
 		if( blockLeft < 40 && blockLeft > -20 && characterTop >= 96 ) {
 			die();
