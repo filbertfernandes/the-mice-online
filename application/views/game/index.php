@@ -1,6 +1,6 @@
 
 <!-- title -->
-<div class="container text-center mt-3">
+<div class="container text-center mt-1">
   <div class="row">
     <div class="col-md">
       <h1>THE MICE</h1>
@@ -38,7 +38,7 @@
 <!-- end game -->
 
 <!-- description & control -->
-<div class="container mt-3 mb-3">
+<div class="container mt-2 mb-2">
   <div class="row justify-content-center">
 
     <div class="col-lg-5">

@@ -30,30 +30,27 @@ const nickname = document.getElementById('nickname');
 	})
 
 	// 2. jump w/ arrow key
-	window.addEventListener('keydown', checkKeyPressArrow, false);
-	function checkKeyPressArrow(key) {
-		if( key.keyCode == '38' ) {
+	$(window).keydown(function(event) {
+		if( event.which == 38 ) {
 			jump();
-	    }
-	}
+		}
+	})
 
 	// 3. light
-	window.addEventListener('keyup', checkKeyPressOn, false);
-	function checkKeyPressOn(key) {
-		if( key.keyCode == '17' ) {
+	$(window).keyup(function(event) {
+		if( event.which == 17 ) {
 			light.style.opacity = '.5';
 			setTimeout(function() {
 				light.style.opacity = '0';
 			}, 1500)
 		}
-	}
+	})
 
 	// 3. gun
-	window.addEventListener('keyup', checkKeyPressGun, false);
-	function checkKeyPressGun(key) {
+	$(window).keyup(function(event) {
 		let flyingBlockLeft = parseInt(window.getComputedStyle(flyingBlock).getPropertyValue("left"));
 		let fatBlockLeft = parseInt(window.getComputedStyle(fatBlock).getPropertyValue("left"))
-		if( key.keyCode == '88' ) {
+		if( event.which == 88 ) {
 			if( character.classList.contains('animate') || progressBar.classList.contains('reload') ) {
 				return;
 			} else {
@@ -104,7 +101,7 @@ const nickname = document.getElementById('nickname');
 
 			}
 		}
-	}
+	})
 
 
 // mute
@@ -123,10 +120,10 @@ const nickname = document.getElementById('nickname');
 
 // score system
 	let score = document.querySelector(".score");
-	let scoreNumb = 0;
+	let scoreNum = 0;
 	let highscore = document.querySelector('.highscore span');
 	let scoreSystem = setInterval(function() {
-			score.innerHTML = scoreNumb++;
+			score.innerHTML = scoreNum++;
 		},100)
 
 
@@ -152,11 +149,11 @@ const nickname = document.getElementById('nickname');
 			block.style.left = '550px';
 			flyingBlock.style.left = '600px';
 			fatBlock.style.left = '600px';
-			if( parseInt(highscore.innerHTML) <= scoreNumb ) {
-				highscoreInput.value = `${scoreNumb-1}`;
+			if( parseInt(highscore.innerHTML) <= scoreNum ) {
+				highscoreInput.value = `${scoreNum-1}`;
 				highscoreForm.submit();
 			}
-			scoreNumb = 0;
+			scoreNum = 0;
 		}
 		if( blockLeft < 40 && blockLeft > -20 && characterTop >= 96 ) {
 			die();
@@ -220,27 +217,26 @@ const nickname = document.getElementById('nickname');
 		flyingBlock.classList.remove('flying-start');
 		fatBlock.classList.remove('fat-start')
 		startButton.innerHTML = 'START';
-		scoreNumb = 0;
+		scoreNum = 0;
 	}
 	function start() {
 		block.classList.add('start')
 		flyingBlock.classList.add('flying-start');
 		fatBlock.classList.add('fat-start')
 		startButton.innerHTML = 'PAUSE';
-		scoreNumb = 0;
+		scoreNum = 0;
 	}
 	
 	// space
-	window.addEventListener('keydown', checkKeyPressPause, false);
-	function checkKeyPressPause(key) {
-		if( key.keyCode == '32' ) {
+	$(window).keydown(function(event) {
+		if( event.which == 32 ) {
 			if( block.classList.contains('start') ) {
 				pause();
 			} else if( !block.classList.contains('start') ) {
 				start();
 			}
-	    }
-	}
+		}
+	})
 
 	// button
 	let startButton = document.querySelector('.startButton');
